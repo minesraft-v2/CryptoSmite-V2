@@ -35,7 +35,7 @@ cat > /tmp/spooflock.sh << 'EOF'
 
 # Generate fake identifiers
 NEW_SERIAL=\$(cat /dev/urandom | tr -dc 'A-Z0-9' | fold -w 10 | head -n 1)
-NEW_MAC=\((printf '02:\%02x:\%02x:\%02x:\%02x:\%02x'\)((RANDOM%256)) \(((RANDOM\%256))\)((RANDOM%256)) \(((RANDOM\%256))\)((RANDOM%256)))
+NEW_MAC=(printf '02:%02x:%02x:%02x:%02x:%02x'((RANDOM%256)) ((RANDOM%256))((RANDOM%256)) ((RANDOM%256))((RANDOM%256)))
 
 echo "Setting fake serial: \$NEW_SERIAL"
 
@@ -71,4 +71,11 @@ sudo bash /tmp/spooflock.sh
 cd /tmp
 curl -LO https://mrchromebox.tech
 sudo bash firmware-util.sh
+```
+
+***
+
+### Step 4: Final Reboot
+```bash
+reboot
 ```
