@@ -8,7 +8,6 @@
 
 
 
-# ChromeOS Modification Procedures
 
 ### Step 1: Clean Enrollment Files
 ```bash
